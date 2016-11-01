@@ -30,8 +30,9 @@ static NSString * OBAssetCollectionTitle = @"Free Cut";
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     CGSize imageSize = self.resultImage.size;
-    CGFloat W = imageSize.width /2;
-    CGFloat H = imageSize.height /2;
+    float scale = [[UIScreen mainScreen] scale];
+    CGFloat W = imageSize.width / scale;
+    CGFloat H = imageSize.height / scale;
     self.imageView.bounds = CGRectMake(0, 0, W, H);
     self.imageView.center = self.view.center;
     self.imageView.image = self.resultImage;
