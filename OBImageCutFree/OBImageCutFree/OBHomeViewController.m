@@ -30,7 +30,6 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    
     OBNavigationController *navVC = (OBNavigationController *)self.navigationController;
     navVC.canDragBack = NO;
     [navVC addGestureRecognizer];
@@ -51,8 +50,10 @@
     CGImageRelease(imageRef);
     OBResultViewController *resultVC = [[OBResultViewController alloc]init];
     resultVC.resultImage = image;
-    [self.navigationController pushViewController:resultVC animated:YES];
+    //注意下面两句话调用顺序，小坑
     [self.drawingView.path removeAllPoints];
+    [self.navigationController pushViewController:resultVC animated:YES];
+
 }
 
 -(void)selectorImage{
