@@ -9,6 +9,8 @@
 #import "OBHomeViewController.h"
 #import "OBCutView.h"
 #import "OBResultViewController.h"
+#import "OBNavigationController.h"
+#import <SVProgressHUD.h>
 @interface OBHomeViewController ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 @property (nonatomic ,strong) UIImagePickerController *picker;
 @property (nonatomic , strong) UIImageView *imageViewToCut;
@@ -25,9 +27,18 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OBTouchesEnded) name:@"kOBTouchesEnd" object:nil];
     self.drawingView.strokeColor = [UIColor yellowColor];
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    OBNavigationController *navVC = (OBNavigationController *)self.navigationController;
+    navVC.canDragBack = NO;
+    [navVC addGestureRecognizer];
+}
 -(void)OBTouchesEnded{
-    NSLog(@"收到通知");
+//    NSLog(@"收到通知");
     float scale = [[UIScreen mainScreen] scale];
+//    NSLog(@"======>%.2f",scale);
     UIGraphicsBeginImageContextWithOptions(self.imageViewToCut.bounds.size, NO, scale);
     UIBezierPath *path = self.drawingView.path;
     [path addClip];
@@ -36,8 +47,8 @@
     UIGraphicsEndImageContext();
     CGImageRef imageRef = CGImageCreateWithImageInRect([newImage CGImage], CGRectMake(self.drawingView.path.bounds.origin.x* scale, self.drawingView.path.bounds.origin.y * scale, self.drawingView.path.bounds.size.width *scale, self.drawingView.path.bounds.size.height *scale));
     UIImage *image = [UIImage imageWithCGImage:imageRef];
-    NSLog(@"%@",image);
-    CGImageRelease(imageRef);    
+//    NSLog(@"=====>%@",image);
+    CGImageRelease(imageRef);
     OBResultViewController *resultVC = [[OBResultViewController alloc]init];
     resultVC.resultImage = image;
     [self.navigationController pushViewController:resultVC animated:YES];
@@ -45,7 +56,7 @@
 }
 
 -(void)selectorImage{
-    NSLog(@"come here");
+//    NSLog(@"come here");
     UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:@"选择图像来源" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *actionTakePhoto = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -53,7 +64,6 @@
     }];
     UIAlertAction *actionPhotoLibrary = [UIAlertAction actionWithTitle:@"相册" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self chooseLogoFromPhotoLibrary];
-        NSLog(@"相");
     }];
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"取消");
@@ -92,7 +102,7 @@
         }];
     }else
     {
-        NSLog(@"模拟其中无法打开照相机,请在真机中使用");
+        [SVProgressHUD showErrorWithStatus:@"模拟器中无法打开照相机,请在真机中使用"];
     }
 }
 
@@ -101,7 +111,7 @@
  */
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     [self dismissViewControllerAnimated:YES completion:^{}];
-//    NSLog(@"===========>%@",info);
+//    (@"===========>%@",info);
     UIImage *image = info[@"UIImagePickerControllerOriginalImage"];
     self.imageViewToCut.image = image;
 }

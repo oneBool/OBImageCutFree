@@ -32,7 +32,7 @@
         self.path = [UIBezierPath bezierPath];
         [self.path setLineWidth:self.linewidth];
     }
-    NSLog(@"%f",self.linewidth);
+//    NSLog(@"%f",self.linewidth);
     return self;
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		140DD44E6BD4B983E4C481E0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EFFDF2B2F4C30AAF58F305B /* libPods.a */; };
+		2D03A04B1DC8FA6000861C57 /* OBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D03A04A1DC8FA6000861C57 /* OBNavigationController.m */; };
 		2D11EF961DBF13A1004C3D07 /* OBCutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D11EF911DBF13A1004C3D07 /* OBCutView.m */; };
 		2D11EF971DBF13A1004C3D07 /* OBHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D11EF931DBF13A1004C3D07 /* OBHomeViewController.m */; };
 		2D11EF981DBF13A1004C3D07 /* OBResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D11EF951DBF13A1004C3D07 /* OBResultViewController.m */; };
@@ -40,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		297587BFBB85526485B39F2E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2D03A0491DC8FA6000861C57 /* OBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBNavigationController.h; sourceTree = "<group>"; };
+		2D03A04A1DC8FA6000861C57 /* OBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBNavigationController.m; sourceTree = "<group>"; };
 		2D11EF901DBF13A1004C3D07 /* OBCutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBCutView.h; sourceTree = "<group>"; };
 		2D11EF911DBF13A1004C3D07 /* OBCutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBCutView.m; sourceTree = "<group>"; };
 		2D11EF921DBF13A1004C3D07 /* OBHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBHomeViewController.h; sourceTree = "<group>"; };
@@ -133,6 +136,8 @@
 				2D11EF931DBF13A1004C3D07 /* OBHomeViewController.m */,
 				2D11EF941DBF13A1004C3D07 /* OBResultViewController.h */,
 				2D11EF951DBF13A1004C3D07 /* OBResultViewController.m */,
+				2D03A0491DC8FA6000861C57 /* OBNavigationController.h */,
+				2D03A04A1DC8FA6000861C57 /* OBNavigationController.m */,
 				2D4D80661DBF11F600610169 /* Main.storyboard */,
 				2D4D80691DBF11F600610169 /* Assets.xcassets */,
 				2D4D806B1DBF11F600610169 /* LaunchScreen.storyboard */,
@@ -368,6 +373,7 @@
 				2D11EF981DBF13A1004C3D07 /* OBResultViewController.m in Sources */,
 				2D11EF961DBF13A1004C3D07 /* OBCutView.m in Sources */,
 				2D4D80621DBF11F600610169 /* AppDelegate.m in Sources */,
+				2D03A04B1DC8FA6000861C57 /* OBNavigationController.m in Sources */,
 				2D11EF971DBF13A1004C3D07 /* OBHomeViewController.m in Sources */,
 				2D4D805F1DBF11F600610169 /* main.m in Sources */,
 			);

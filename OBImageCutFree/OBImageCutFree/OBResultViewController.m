@@ -9,6 +9,7 @@
 #import "OBResultViewController.h"
 #import <Photos/Photos.h>
 #import <SVProgressHUD.h>
+#import "OBNavigationController.h"
 @interface OBResultViewController ()
 @property(nonatomic , strong)UIImageView *imageView;
 @end
@@ -29,13 +30,25 @@ static NSString * OBAssetCollectionTitle = @"Free Cut";
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     CGSize imageSize = self.resultImage.size;
-    CGFloat W = imageSize.width;
-    CGFloat H = imageSize.height;
+    CGFloat W = imageSize.width /2;
+    CGFloat H = imageSize.height /2;
     self.imageView.bounds = CGRectMake(0, 0, W, H);
     self.imageView.center = self.view.center;
     self.imageView.image = self.resultImage;
+    
+    
+    OBNavigationController *navVC = (OBNavigationController *)self.navigationController;
+    navVC.canDragBack = YES;
+    [navVC addGestureRecognizer];
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    OBNavigationController *navVC = (OBNavigationController *)self.navigationController;
+    navVC.canDragBack = NO;
+    [navVC addGestureRecognizer];
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -48,7 +61,6 @@ static NSString * OBAssetCollectionTitle = @"Free Cut";
 }
 
 -(void)save{
-    NSLog(@"saveImage");
     /*
      PHAuthorizationStatusNotDetermined,     用户还没有做出选择
      PHAuthorizationStatusDenied,            用户拒绝当前应用访问相册(用户当初点击了"不允许")

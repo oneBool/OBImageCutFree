@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "OBHomeViewController.h"
-
+#import "OBNavigationController.h"
 @interface AppDelegate ()
 
 @end
@@ -20,7 +20,7 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     OBHomeViewController *homeVc = [[OBHomeViewController alloc]init];
-    UINavigationController *navVc = [[UINavigationController alloc]initWithRootViewController:homeVc];
+    OBNavigationController *navVc = [[OBNavigationController alloc]initWithRootViewController:homeVc];
     self.window.rootViewController = navVc;
     [self.window makeKeyAndVisible];
     return YES;
